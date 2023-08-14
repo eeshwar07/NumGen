@@ -10,10 +10,10 @@ const db = mysql.createPool({
   //   password: "AVNS_qHSShVtgNPyeoku0JyA",
   //   database: "defaultdb",
 
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "num_gen",
+  host: "bbvpb4gk3aa40clvmb52-mysql.services.clever-cloud.com",
+  user: "u0vnjsmilnrafu0h",
+  password: "u0vnjsmilnrafu0h",
+  database: "bbvpb4gk3aa40clvmb52",
 });
 
 app.use(cors());
