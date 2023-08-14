@@ -12,7 +12,7 @@ const db = mysql.createPool({
 
   host: "bbvpb4gk3aa40clvmb52-mysql.services.clever-cloud.com",
   user: "u0vnjsmilnrafu0h",
-  password: "u0vnjsmilnrafu0h",
+  password: "0V4c3bbMltneX57oBPkt",
   database: "bbvpb4gk3aa40clvmb52",
 });
 
@@ -28,6 +28,7 @@ app.post("/api/numgen", (request, response) => {
   const result = request.body.result;
   const query1 = "SELECT * FROM numgen WHERE RandomNum = ?";
   db.query(query1, [result], (err, res) => {
+    console.log(err);
     if (res == "") {
       const query2 = "INSERT INTO numgen (RandomNum) VALUES (?) ";
       db.query(query2, [result], (err, res) => {

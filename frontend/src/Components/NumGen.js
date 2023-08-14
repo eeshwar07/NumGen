@@ -19,6 +19,9 @@ export default function NumGen() {
   const handleSelect = async () => {
     // setvalue(result)
     const response = await axios.post("http://localhost:5000/api/numgen", {
+      // const response = await axios.post(
+      //   "https://num-gen.onrender.com/api/numgen",
+      //   {
       result,
     });
     setmessage(response.data.message);
