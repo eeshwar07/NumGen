@@ -41,12 +41,12 @@ export default function NumGen() {
   const handleSubmit = async () => {
     // const response = await axios.post("http://localhost:5000/api/savedata", {
     const response = await axios.post(
-      "https://num-gen.onrender.com/api/numgen",
+      "https://num-gen.onrender.com/api/savedata",
       {
         result,
       }
     );
-    console.log(response.data);
+    console.log(response.data.value);
     setmessage(response.data.message);
     setstatus(response.data.status);
   };
