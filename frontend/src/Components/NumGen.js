@@ -17,12 +17,13 @@ export default function NumGen() {
   };
 
   const handleSelect = async (number) => {
-    const response = await axios.post("http://localhost:5000/api/numgen", {
-      // const response = await axios.post(
-      //   "https://num-gen.onrender.com/api/numgen",
-      //   {
-      number,
-    });
+    // const response = await axios.post("http://localhost:5000/api/numgen", {
+    const response = await axios.post(
+      "https://num-gen.onrender.com/api/numgen",
+      {
+        number,
+      }
+    );
 
     // const response = await axios.post("http://localhost:5000/api/send");
     console.log(response.data);
