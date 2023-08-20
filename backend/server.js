@@ -71,13 +71,13 @@ app.post("/api/savedata", (request, response) => {
       response.send({
         message: "Some error occured.....",
         status: 0,
-        value: result,
       });
     } else {
       console.log(res);
       response.send({
         message: "Number selection successful.",
         status: 1,
+        value: result,
       });
     }
   });
