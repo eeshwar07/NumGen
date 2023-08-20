@@ -7,18 +7,38 @@ export default function NumGen() {
   const [message, setmessage] = useState();
   const [status, setstatus] = useState();
 
-  const handleGenerate = () => {
+  const NumberGenerator = () => {
     setmessage("");
     const min = 100000;
     const max = 999999;
     const number = Math.floor(Math.random() * (max - min + 1)) + min;
-    setresult(number);
-    setshowResult(true);
+    // const number = 117331;
+    handleSelect(number);
   };
 
-  const handleSelect = async () => {
-    // setvalue(result)
-    // const response = await axios.post("http://localhost:5000/api/numgen", {
+  const handleSelect = async (number) => {
+    const response = await axios.post("http://localhost:5000/api/numgen", {
+      // const response = await axios.post(
+      //   "https://num-gen.onrender.com/api/numgen",
+      //   {
+      number,
+    });
+
+    // const response = await axios.post("http://localhost:5000/api/send");
+    console.log(response.data);
+    const status = response.data.status;
+    if (status === 1) {
+      setresult(number);
+      setshowResult(true);
+    }
+    if (status === 0) {
+      console.log(response.data.message);
+      NumberGenerator();
+    }
+  };
+
+  const handleSubmit = async () => {
+    // const response = await axios.post("http://localhost:5000/api/savedata", {
     const response = await axios.post(
       "https://num-gen.onrender.com/api/numgen",
       {
@@ -35,14 +55,14 @@ export default function NumGen() {
       <div className="main">
         <div className="ac">
           <div>
-            <button className="button" onClick={handleGenerate}>
+            <button className="button" onClick={NumberGenerator}>
               Generate
             </button>
           </div>
           <div>{showResult && <h3>Number generated is: {result}</h3>}</div>
           <div>
             {showResult && (
-              <button className="button" onClick={handleSelect}>
+              <button className="button" onClick={handleSubmit}>
                 Select Number
               </button>
             )}

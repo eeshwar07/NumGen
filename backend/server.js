@@ -25,15 +25,15 @@ app.get("/", (request, response) => {
 });
 
 app.post("/api/numgen", (request, response) => {
-  const result = request.body.result;
+  const result = request.body.number;
+  console.log(request.body);
   const query1 = "SELECT * FROM numgen WHERE RandomNum = ?";
+
   db.query(query1, [result], (err, res) => {
     console.log(err);
+    console.log(res);
     if (res == "") {
-      const query2 = "INSERT INTO numgen (RandomNum) VALUES (?) ";
-      db.query(query2, [result], (err, res) => {
-        response.send({ message: "Number selection successful.", status: 1 });
-      });
+      response.send({ message: "Number selection successful.", status: 1 });
     }
     if (res != "") {
       response.send({
@@ -44,6 +44,44 @@ app.post("/api/numgen", (request, response) => {
   });
 });
 
+app.post("/api/send", (request, response) => {
+  const randomNumbers = [];
+  for (let i = 0; i < 100000; i++) {
+    const random_number = Math.floor(Math.random() * 900000) + 100000;
+    randomNumbers.push([random_number]);
+  }
+
+  const sql = "INSERT INTO numgen (RandomNum) VALUES ?";
+  db.query(sql, [randomNumbers], (err, result) => {
+    if (err) {
+      console.error("Error inserting random numbers: " + err);
+      res.status(500).send("Error inserting random numbers.");
+      return;
+    }
+  });
+});
+
+app.post("/api/savedata", (request, response) => {
+  const result = request.body.result;
+  // const result = 9999;
+  const que = "INSERT INTO numgen (RandomNum) VALUES (?)";
+  db.query(que, [result], (err, res) => {
+    if (err) {
+      console.log(err);
+      response.send({
+        message: "Some error occured.....",
+        status: 0,
+      });
+    } else {
+      console.log(res);
+      response.send({
+        message: "Number selection successful.",
+        status: 1,
+      });
+    }
+  });
+});
+
 app.listen(5000, () => {
-  console.log("running on port 5000");
+  console.log("Running on port 5000");
 });
