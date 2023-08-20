@@ -71,6 +71,7 @@ app.post("/api/savedata", (request, response) => {
       response.send({
         message: "Some error occured.....",
         status: 0,
+        value: result,
       });
     } else {
       console.log(res);
