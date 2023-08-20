@@ -45,6 +45,7 @@ export default function NumGen() {
         result,
       }
     );
+    console.log(response.data.value);
     setmessage(response.data.message);
     setstatus(response.data.status);
   };
