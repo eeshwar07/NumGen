@@ -46,7 +46,7 @@ app.post("/api/numgen", (request, response) => {
 
 app.post("/api/send", (request, response) => {
   const randomNumbers = [];
-  for (let i = 0; i < 100000; i++) {
+  for (let i = 0; i < 600000; i++) {
     const random_number = Math.floor(Math.random() * 900000) + 100000;
     randomNumbers.push([random_number]);
   }

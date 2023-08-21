@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { baseURL } from "../util";
 
 export default function NumGen() {
   const [result, setresult] = useState();
@@ -17,15 +18,11 @@ export default function NumGen() {
   };
 
   const handleSelect = async (number) => {
-    // const response = await axios.post("http://localhost:5000/api/numgen", {
-    const response = await axios.post(
-      "https://num-gen.onrender.com/api/numgen",
-      {
-        number,
-      }
-    );
+    const response = await axios.post(baseURL + "api/numgen", {
+      number,
+    });
 
-    // const response = await axios.post("http://localhost:5000/api/send");
+    // const response = await axios.post(baseURL + "api/send");
     console.log(response.data);
     const status = response.data.status;
     if (status === 1) {
@@ -39,13 +36,9 @@ export default function NumGen() {
   };
 
   const handleSubmit = async () => {
-    // const response = await axios.post("http://localhost:5000/api/savedata", {
-    const response = await axios.post(
-      "https://num-gen.onrender.com/api/savedata",
-      {
-        result,
-      }
-    );
+    const response = await axios.post(baseURL + "api/savedata", {
+      result,
+    });
     console.log(response.data.value);
     setmessage(response.data.message);
     setstatus(response.data.status);
