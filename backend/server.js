@@ -10,10 +10,10 @@ const db = mysql.createPool({
   //   password: "AVNS_qHSShVtgNPyeoku0JyA",
   //   database: "defaultdb",
 
-  host: "bbvpb4gk3aa40clvmb52-mysql.services.clever-cloud.com",
-  user: "u0vnjsmilnrafu0h",
-  password: "0V4c3bbMltneX57oBPkt",
-  database: "bbvpb4gk3aa40clvmb52",
+  host: "bgqxweg2ccszwbbanxqd-mysql.services.clever-cloud.com",
+  user: "ugpkvr1drr2gknom",
+  password: "QvpkC1x1I24C0OkVONmz",
+  database: "bgqxweg2ccszwbbanxqd",
 });
 
 app.use(cors());
@@ -46,7 +46,7 @@ app.post("/api/numgen", (request, response) => {
 
 app.post("/api/send", (request, response) => {
   const randomNumbers = [];
-  for (let i = 0; i < 600000; i++) {
+  for (let i = 0; i < 500000; i++) {
     const random_number = Math.floor(Math.random() * 900000) + 100000;
     randomNumbers.push([random_number]);
   }
